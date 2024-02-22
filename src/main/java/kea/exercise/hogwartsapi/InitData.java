@@ -73,10 +73,10 @@ public class InitData implements CommandLineRunner {
         Student luna = new Student("Luna", "", "Lovegood", LocalDate.of(1981, 2, 13), ravenclaw, true, 1991, 1998, true);
         studentRepository.save(luna);
 
-        List<Student> students = studentRepository.findAll();
 
         // Opretter teacher Snape
         Teacher snape = new Teacher("Severus", "", "Snape", LocalDate.of(1960, 1, 9), slytherin, true, EmpType.Tenured, LocalDate.of(1981, 9, 1), LocalDate.of(1998, 4, 2));
+        teacherRepository.save(snape);
 
         List<Student> studentsInCourse = Arrays.asList(harry, ron, hermione, hannah, justin, cedric, vincent, draco, pansy, terry, sue, luna);
 
