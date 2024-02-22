@@ -25,8 +25,8 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable int id) {
-        return repo.findById(id).orElse(null);
+    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
+        return ResponseEntity.of(repo.findById(id));
     }
 
     @PostMapping

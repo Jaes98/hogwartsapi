@@ -1,6 +1,7 @@
 package kea.exercise.hogwartsapi.models;
 
 import jakarta.persistence.*;
+import kea.exercise.hogwartsapi.EmpType;
 
 import java.time.LocalDate;
 
@@ -15,12 +16,12 @@ public class Teacher {
     @OneToOne
     private House house;
     private boolean headOfHouse;
-//    private EmpType employment;
-    private String employment;
+    private EmpType employment;
+//    private String employment;
     private LocalDate employmentStart;
     private LocalDate employmentEnd;
 
-    public Teacher(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean headOfHouse, String employment, LocalDate employmentStart, LocalDate employmentEnd) {
+    public Teacher(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean headOfHouse, EmpType employment, LocalDate employmentStart, LocalDate employmentEnd) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -88,11 +89,20 @@ public class Teacher {
         this.headOfHouse = headOfHouse;
     }
 
-    public String getEmployment() {
+//    public String getEmployment() {
+//        return employment;
+//    }
+//
+//    public void setEmployment(String employment) {
+//        this.employment = employment;
+//    }
+
+
+    public EmpType getEmployment() {
         return employment;
     }
 
-    public void setEmployment(String employment) {
+    public void setEmployment(EmpType employment) {
         this.employment = employment;
     }
 
