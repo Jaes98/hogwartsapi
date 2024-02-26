@@ -8,8 +8,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class House {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Id
     private String name;
     private String founder;
     private String color;
@@ -21,13 +20,13 @@ public class House {
     }
     public House() {}
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
@@ -52,6 +51,7 @@ public class House {
     public void setColor(String color) {
         this.color = color;
     }
+
 
     @Override
     public String toString() {

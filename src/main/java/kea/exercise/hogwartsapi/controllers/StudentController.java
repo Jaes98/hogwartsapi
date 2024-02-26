@@ -1,50 +1,47 @@
 package kea.exercise.hogwartsapi.controllers;
 
 
+import kea.exercise.hogwartsapi.dtos.StudentRequestDTO;
+import kea.exercise.hogwartsapi.dtos.StudentResponseDTO;
 import kea.exercise.hogwartsapi.models.Student;
 import kea.exercise.hogwartsapi.repositories.StudentRepository;
+import kea.exercise.hogwartsapi.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
-    private StudentRepository repo;
+    private StudentService studentService;
 
     public StudentController(StudentRepository repo) {
-        this.repo = repo;
+        this.studentService = studentService;
     }
 
     @GetMapping
-    public List<Student> getAllStudents() {
-        return repo.findAll();
+    public Iterable<StudentResponseDTO> getAllStudents() {
+        return studentService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
-        return ResponseEntity.of(repo.findById(id));
+    public ResponseEntity<StudentResponseDTO> getStudentById(@PathVariable int id) {
+        return ResponseEntity.of(studentService.findById(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Student createStudent(@RequestBody Student student) {
-        return repo.save(student);
+    public StudentResponseDTO createStudent(@RequestBody Student student) {
+        return studentService.save(student);
     }
 
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
-        student.setId(id);
-        return repo.save(student);
+    public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody StudentRequestDTO student) {
+        return ResponseEntity.of(studentService.updateIfExists(id, student));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Student> deleteOne(@PathVariable int id) {
-        Optional<Student> deleteStudent = repo.findById(id);
-        repo.deleteById(id);
-        return ResponseEntity.of(deleteStudent);
+    public ResponseEntity<StudentResponseDTO> deleteOne(@PathVariable int id) {
+        return ResponseEntity.of(studentService.deleteById(id));
     }
 }
