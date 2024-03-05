@@ -33,10 +33,10 @@ public class InitData implements CommandLineRunner {
     public void run(String... args) {
         //Starter alle 4 houses
 
-        House gryffindor = new House("Gryffindor", "Godric Gryffindor", "Red and Gold");
-        House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff", "Yellow and Black");
-        House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw", "Blue and Silver");
-        House slytherin = new House("Slytherin", "Salazar Slytherin", "Green and Silver");
+        House gryffindor = new House("Gryffindor", "Godric Gryffindor", "Red", "Gold");
+        House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff", "Yellow", "Black");
+        House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw", "Blue", "Silver");
+        House slytherin = new House("Slytherin", "Salazar Slytherin", "Green", "Silver");
 
         houseRepository.save(gryffindor);
         houseRepository.save(hufflepuff);
