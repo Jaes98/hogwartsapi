@@ -1,13 +1,17 @@
 package kea.exercise.hogwartsapi.services;
 
+import kea.exercise.hogwartsapi.EmpType;
 import kea.exercise.hogwartsapi.dtos.StudentRequestDTO;
 import kea.exercise.hogwartsapi.dtos.StudentResponseDTO;
 import kea.exercise.hogwartsapi.models.House;
 import kea.exercise.hogwartsapi.models.Student;
 import kea.exercise.hogwartsapi.repositories.HouseRepository;
 import kea.exercise.hogwartsapi.repositories.StudentRepository;
+import org.apache.coyote.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,11 +38,9 @@ public class StudentService {
         return toDTO(studentRepository.save(toEntity(student)));
     }
 
-    private Student toEntity(StudentRequestDTO student) {
+    public Student toEntity(StudentRequestDTO student) {
         Student entity = new Student();
-        entity.setFirstName(student.getFirstName());
-        entity.setMiddleName(student.getMiddleName());
-        entity.setLastName(student.getLastName());
+        entity.setFullName(student.getFullName());
         entity.setDateOfBirth(student.getDateOfBirth());
         Optional<House> house = houseRepository.findById(student.getHouse());
         house.ifPresent(entity::setHouse);
@@ -46,6 +48,7 @@ public class StudentService {
         entity.setEnrollmentYear(student.getEnrollmentYear());
         entity.setGraduationYear(student.getGraduationYear());
         entity.setGraduated(student.isGraduated());
+        entity.setSchoolYear(student.getSchoolYear());
         return entity;
     }
 
@@ -55,13 +58,14 @@ public class StudentService {
         return existingStudent;
     }
 
-    public Optional<Student> updateIfExists(int id, Student student) {
+    public Student updateIfExists(int id, Student student) {
         if(studentRepository.findById(id).isPresent()) {
             student.setId(id);
             studentRepository.save(student);
-            return Optional.of(student);
-        } else {
-            return Optional.empty();
+            return student;
+        }
+        else {
+            return null;
         }
 
     }

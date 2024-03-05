@@ -4,9 +4,7 @@ import java.time.LocalDate;
 
 public class StudentRequestDTO {
     private int id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String fullName;
     private LocalDate dateOfBirth;
     // private House house;
     private String house;
@@ -14,6 +12,7 @@ public class StudentRequestDTO {
     private int enrollmentYear;
     private int graduationYear;
     private boolean graduated;
+    private int schoolYear;
 
     public int getId() {
         return id;
@@ -23,30 +22,12 @@ public class StudentRequestDTO {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -93,5 +74,13 @@ public class StudentRequestDTO {
 
     public void setGraduated(boolean graduated) {
         this.graduated = graduated;
+    }
+
+    public int getSchoolYear() {
+        return schoolYear;
+    }
+
+    public void setSchoolYear(int schoolYear) {
+        this.schoolYear = schoolYear;
     }
 }

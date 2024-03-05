@@ -22,19 +22,19 @@ public class HouseController {
     }
 
     @GetMapping("/{id}")
-    public House getHouseById(@PathVariable int id) {
-        return repo.findById(id).orElse(null);
+    public House getHouseByName(@PathVariable String name) {
+        return repo.findById(name).orElse(null);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public House createHouse(@RequestBody House house) {
-        return repo.save(house);
-    }
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public House createHouse(@RequestBody House house) {
+//        return repo.save(house);
+//    }
 
-    @PutMapping("/{id}")
-    public House updateHouse(@PathVariable int id, @RequestBody House house) {
-        house.setId(id);
-        return repo.save(house);
-    }
+//    @PutMapping("/{id}")
+//    public House updateHouse(@PathVariable int id, @RequestBody House house) {
+//        house.setId(id);
+//        return repo.save(house);
+//    }
 }

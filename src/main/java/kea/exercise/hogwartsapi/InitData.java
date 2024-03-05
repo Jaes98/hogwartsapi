@@ -45,32 +45,32 @@ public class InitData implements CommandLineRunner {
 
 
         //Opretter students, 3 fra hvert hus.
-        Student harry = new Student("Harry", "James", "Potter", LocalDate.of(1980, 7, 31), gryffindor, true, 1991, 1998, true);
+        Student harry = new Student("Harry", "James", "Potter", LocalDate.of(1980, 7, 31), gryffindor, true, 1991, 1998, true, 7);
         studentRepository.save(harry);
-        Student ron = new Student("Ron", "Bilius", "Weasley", LocalDate.of(1980, 3, 1), gryffindor, true, 1991, 1998, true);
+        Student ron = new Student("Ron", "Bilius", "Weasley", LocalDate.of(1980, 3, 1), gryffindor, true, 1991, 1998, true, 7);
         studentRepository.save(ron);
-        Student hermione = new Student("Hermione", "Jean", "Granger", LocalDate.of(1979, 9, 19), gryffindor, true, 1991, 1998, true);
+        Student hermione = new Student("Hermione", "Jean", "Granger", LocalDate.of(1979, 9, 19), gryffindor, true, 1991, 1998, true, 7);
         studentRepository.save(hermione);
 
-        Student hannah = new Student("Hannah", "Abbott", "", LocalDate.of(1980, 2, 1), hufflepuff, true, 1991, 1998, true);
+        Student hannah = new Student("Hannah", "Abbott", "", LocalDate.of(1980, 2, 1), hufflepuff, true, 1991, 1998, true, 7);
         studentRepository.save(hannah);
-        Student justin = new Student("Justin", "", "Finch-Fletchley", LocalDate.of(1980, 10, 1), hufflepuff, true, 1991, 1998, true);
+        Student justin = new Student("Justin", "", "Finch-Fletchley", LocalDate.of(1980, 10, 1), hufflepuff, true, 1991, 1998, true, 7);
         studentRepository.save(justin);
-        Student cedric = new Student("Cedric", "", "Diggory", LocalDate.of(1977, 9, 1), hufflepuff, false, 1991, 1998, true);
+        Student cedric = new Student("Cedric", "", "Diggory", LocalDate.of(1977, 9, 1), hufflepuff, false, 1991, 1998, true, 7);
         studentRepository.save(cedric);
 
-        Student vincent = new Student("Vincent", "Crabbe", "", LocalDate.of(1980, 10, 31), slytherin, true, 1991, 1998, true);
+        Student vincent = new Student("Vincent", "Crabbe", "", LocalDate.of(1980, 10, 31), slytherin, true, 1991, 1998, true, 7);
         studentRepository.save(vincent);
-        Student draco = new Student("Draco", "Lucius", "Malfoy", LocalDate.of(1980, 6, 5), slytherin, true, 1991, 1998, true);
+        Student draco = new Student("Draco", "Lucius", "Malfoy", LocalDate.of(1980, 6, 5), slytherin, true, 1991, 1998, true, 7);
         studentRepository.save(draco);
-        Student pansy = new Student("Pansy", "", "Parkinson", LocalDate.of(1980, 2, 1), slytherin, true, 1991, 1998, true);
+        Student pansy = new Student("Pansy", "", "Parkinson", LocalDate.of(1980, 2, 1), slytherin, true, 1991, 1998, true, 7);
         studentRepository.save(pansy);
 
-        Student terry = new Student("Terry", "Boot", "", LocalDate.of(1980, 5, 1), ravenclaw, true, 1991, 1998, true);
+        Student terry = new Student("Terry", "Boot", "", LocalDate.of(1980, 5, 1), ravenclaw, true, 1991, 1998, true, 7);
         studentRepository.save(terry);
-        Student sue = new Student("Sue", "Li", "", LocalDate.of(1980, 6, 1), ravenclaw, true, 1991, 1998, true);
+        Student sue = new Student("Sue", "Li", "", LocalDate.of(1980, 6, 1), ravenclaw, true, 1991, 1998, true, 7);
         studentRepository.save(sue);
-        Student luna = new Student("Luna", "", "Lovegood", LocalDate.of(1981, 2, 13), ravenclaw, true, 1991, 1998, true);
+        Student luna = new Student("Luna", "", "Lovegood", LocalDate.of(1981, 2, 13), ravenclaw, true, 1991, 1998, true, 7);
         studentRepository.save(luna);
 
 

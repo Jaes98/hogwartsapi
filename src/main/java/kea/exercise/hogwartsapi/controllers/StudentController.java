@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
-    public StudentController(StudentRepository repo) {
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -31,13 +31,13 @@ public class StudentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentResponseDTO createStudent(@RequestBody Student student) {
-        return studentService.save(student);
+    public StudentResponseDTO createStudent(@RequestBody StudentRequestDTO studentRequestDTO) {
+        return studentService.save(studentRequestDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody StudentRequestDTO student) {
-        return ResponseEntity.of(studentService.updateIfExists(id, student));
+    public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student studentRequestDTO) {
+        return ResponseEntity.ok(studentService.updateIfExists(id, studentRequestDTO));
     }
 
     @DeleteMapping("/{id}")

@@ -83,4 +83,12 @@ public class Course {
                 ", students=" + students +
                 '}';
     }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
 }
