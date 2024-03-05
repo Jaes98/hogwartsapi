@@ -2,6 +2,7 @@ package kea.exercise.hogwartsapi.controllers;
 
 
 import kea.exercise.hogwartsapi.models.Course;
+import kea.exercise.hogwartsapi.models.Student;
 import kea.exercise.hogwartsapi.models.Teacher;
 import kea.exercise.hogwartsapi.repositories.CourseRepository;
 import kea.exercise.hogwartsapi.repositories.StudentRepository;
@@ -57,6 +58,26 @@ public class CourseController {
     public Course updateCourse(@PathVariable int id, @RequestBody Course course) {
         course.setId(id);
         return repo.save(course);
+    }
+
+    @PutMapping("/courses/{courseId}/students/{studentId}")
+    public ResponseEntity<Course> addStudentToCourse(@PathVariable int courseId, @PathVariable int studentId) {
+        Optional<Course> optionalCourse = repo.findById(courseId);
+        Optional<Student> optionalStudent = studentRepo.findById(studentId);
+
+        if (optionalCourse.isEmpty() || optionalStudent.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Course course = optionalCourse.get();
+        Student student = optionalStudent.get();
+
+        // Add the student to the course
+        //List<Student> students = studentRepository.findAll();
+        course.addStudent(student);
+        repo.save(course);
+
+        return ResponseEntity.ok(course);
     }
 
     @DeleteMapping("/{id}")

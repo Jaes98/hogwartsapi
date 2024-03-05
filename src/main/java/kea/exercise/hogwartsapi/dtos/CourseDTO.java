@@ -1,29 +1,19 @@
-package kea.exercise.hogwartsapi.models;
+package kea.exercise.hogwartsapi.dtos;
 
-import jakarta.persistence.*;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import kea.exercise.hogwartsapi.models.Student;
+import kea.exercise.hogwartsapi.models.Teacher;
 
 import java.util.List;
 
-@Entity
-public class Course {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CourseDTO {
     private int id;
     private String subject;
     private int schoolYear;
     private boolean current;
-    @ManyToOne
     private Teacher teacher;
-    @ManyToMany
     private List<Student> students;
-
-    public Course(String subject, int schoolYear, boolean current, Teacher teacher, List<Student> students) {
-        this.subject = subject;
-        this.schoolYear = schoolYear;
-        this.current = current;
-        this.teacher = teacher;
-        this.students = students;
-    }
-    public Course() {}
 
     public int getId() {
         return id;
@@ -71,24 +61,5 @@ public class Course {
 
     public void setStudents(List<Student> students) {
         this.students = students;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "subject='" + subject + '\'' +
-                ", schoolYear=" + schoolYear +
-                ", current=" + current +
-                ", teacher=" + teacher +
-                ", students=" + students +
-                '}';
-    }
-
-    public void addStudent(Student student) {
-        students.add(student);
-    }
-
-    public void removeStudent(Student student) {
-        students.remove(student);
     }
 }

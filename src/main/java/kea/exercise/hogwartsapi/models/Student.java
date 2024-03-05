@@ -14,17 +14,19 @@ public class Student {
 
     private LocalDate dateOfBirth;
     @ManyToOne
+    @JoinColumn(name = "house")
     private House house;
     private boolean prefect;
     private int enrollmentYear;
     private int graduationYear;
     private boolean graduated;
+    private int schoolYear;
 
     public Student() {
 
     }
 
-    public Student(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean prefect, int enrollmentYear, int graduationYear, boolean graduated) {
+    public Student(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean prefect, int enrollmentYear, int graduationYear, boolean graduated, int schoolYear) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -34,8 +36,28 @@ public class Student {
         this.enrollmentYear = enrollmentYear;
         this.graduationYear = graduationYear;
         this.graduated = graduated;
+        this.schoolYear = schoolYear;
     }
-        public int getId() {
+    public Student(String fullName, LocalDate dateOfBirth, House house, boolean prefect, int enrollmentYear, int graduationYear, boolean graduated, int schoolYear) {
+        setFullName(fullName);
+        this.dateOfBirth = dateOfBirth;
+        this.house = house;
+        this.prefect = prefect;
+        this.enrollmentYear = enrollmentYear;
+        this.graduationYear = graduationYear;
+        this.graduated = graduated;
+        this.schoolYear = schoolYear;
+    }
+
+    public int getSchoolYear() {
+        return schoolYear;
+    }
+
+    public void setSchoolYear(int schoolYear) {
+        this.schoolYear = schoolYear;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -128,5 +150,15 @@ public class Student {
                 ", graduationYear=" + graduationYear +
                 ", graduated=" + graduated +
                 '}';
+    }
+    public void setFullName(String fullName) {
+        String[] names = fullName.split(" ");
+        this.firstName = names[0];
+        this.middleName = names.length > 2 ? names[1] : "";
+        this.lastName = names[names.length - 1];
+    }
+
+    public String getFullName() {
+        return this.firstName + " " + this.middleName + " " + this.lastName;
     }
 }
